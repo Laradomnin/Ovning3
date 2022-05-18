@@ -28,7 +28,7 @@ namespace Ovning3
             {  // validera input
                 if (string.IsNullOrEmpty(value))
                 {
-                    // exception
+                    // c exception
                     throw new ArgumentException(" Namn är obligatorisk !");
 
                 }
