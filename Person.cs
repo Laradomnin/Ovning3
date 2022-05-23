@@ -11,13 +11,25 @@ namespace Ovning3
         private string fName;
         private string lName;
         private int height;
-        private int weight;
+        private double weight;
         private int age;
+       
+        //Constructor:
+        public Person()
+        {
+        }
+        // Constructor2:
+        public Person(string n, int a, double w)
+        {
+            FName = n;
+            Age = a;
+            Weight = w;
+        }
         public int Height {
             get { return height; }
             set { height = value; }
         }
-        public int Weight {
+        public double Weight {
             get { return weight; }
             set { weight = value; }
         }
@@ -36,29 +48,27 @@ namespace Ovning3
         }
         public string LName {
             get { return lName; }
-            set { lName = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("Kan ej lämnas tomt");
+                if (value.Length > 10 || value.Length< 2)
+                    throw new ArgumentOutOfRangeException("Det skall vara minst 2 och högst 10 tecken");
+                lName = value;
+            }
+            
         }
         public int Age {
             get { return age; }
             set { age = value; }
         }
-        //Constructor:
-        public Person()
-        {
-        }
-        // Constructor:
-        public Person(string n, int a, int w)
-        {
-            FName = n;
-            Age = a;
-            Weight = w;
-        }
+        
         // Printing method:
         
         
         public string PrintPerson()
         {
-         return string.Format("{0}, {1} years old, {2}.", fName, age, weight);
+         return string.Format("Person: {0}, är {1} år, väger {2} .", fName, age, weight);
         }
 
     }
